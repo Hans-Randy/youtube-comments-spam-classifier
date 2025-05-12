@@ -38,9 +38,12 @@ function App() {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/api/predict", {
-        comments: [comment],
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/predict`,
+        {
+          comments: [comment],
+        }
+      );
       setResults(response.data.results);
       setComment("");
     } catch (err) {
