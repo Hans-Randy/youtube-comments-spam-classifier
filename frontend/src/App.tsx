@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { theme } from "./theme";
 import axios from "axios";
+import spamLogo from "./assets/spam-youtube-logo.webp";
 
 interface PredictionResult {
   comment: string;
@@ -24,10 +25,10 @@ interface PredictionResult {
 }
 
 function App() {
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState<string>("");
   const [results, setResults] = useState<PredictionResult[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,7 +55,26 @@ function App() {
     <ThemeProvider theme={theme}>
       <Container maxWidth="md">
         <Box sx={{ my: 4 }}>
-          <Typography variant="h1" component="h1" gutterBottom align="center">
+          <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
+            <img
+              src={spamLogo}
+              alt="Spam on YouTube Logo"
+              style={{
+                maxWidth: 220,
+                width: "100%",
+                height: "auto",
+                borderRadius: 8,
+                boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+              }}
+            />
+          </Box>
+          <Typography
+            variant="h1"
+            component="h1"
+            gutterBottom
+            align="center"
+            color="primary"
+          >
             YouTube Spam Classifier
           </Typography>
 
