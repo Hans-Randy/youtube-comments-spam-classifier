@@ -42,5 +42,12 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/')
+def health_check():
+    """Health check endpoint."""
+    return jsonify({"status": "healthy", "message": "Server is running"})
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # Set debug=False for production environments
+    app.run(host='0.0.0.0', port=5000, debug=False)
+

@@ -4,3 +4,6 @@
 **/__pycache__/
 **/.idea/
 **/package-lock.json
+**/venv/
+**/__pycache__/
+**/.idea/
