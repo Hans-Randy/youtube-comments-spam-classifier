@@ -5,7 +5,16 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={
+    r"/api/*": {
+        "origins": [
+            "https://youtube-comments-spam-classifier.vercel.app",
+            "http://localhost:5000"  # Keep local development working
+        ],
+        "methods": ["POST", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
 
 # Load the trained model and vectorizer
 model = joblib.load('serialized_model/spam_classifier.pkl')
